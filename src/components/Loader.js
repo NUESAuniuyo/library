@@ -1,0 +1,15 @@
+import React from 'react';
+import './Loader.css';
+
+const Loader = () => {
+  return (
+    <div className="loader-overlay">
+      <div className="loader-content">
+        <div className="loader-spinner"></div>
+        <p className="loading-text">Loading...</p>
+      </div>
+    </div>
+  );
+};
+
+export default Loader;

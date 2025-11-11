@@ -1,0 +1,61 @@
+{
+  // JSON Schema and Validation
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "https://json.schemastore.org/package.json"
+    }
+  ],
+  "json.schemaDownload.enable": true,
+  "json.schemaValidation.enable": true,
+  "json.schemaStore.enable": true,
+  "json.schemaStore.url": "https://www.schemastore.org/api/json/catalog.json",
+
+  // Editor Settings
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": [
+    "source.fixAll.eslint"
+  ],
+  // CSS/Tailwind Settings
+  "css.validate": false,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "tailwindCSS.validate": true,
+  "editor.quickSuggestions.other": true,
+  "editor.quickSuggestions.comments": true,
+  "editor.suggest.showKeywords": true,
+  "editor.suggest.showSnippets": true,
+  "editor.suggest.showClasses": true,
+  "editor.suggest.showColors": true,
+  "editor.suggest.showConstants": true,
+  "editor.suggest.showEnums": true,
+  "editor.suggest.showFields": true,
+  "editor.suggest.showFiles": true,
+  "editor.suggest.showFolders": true,
+  "editor.suggest.showFunctions": true,
+  "editor.suggest.showInterfaces": true,
+  "editor.suggest.showIssues": true,
+  "editor.suggest.showMethods": true,
+  "editor.suggest.showModules": true,
+  "editor.suggest.showOperators": true,
+  "editor.suggest.showProperties": true,
+  "editor.suggest.showReferences": true,
+  "editor.suggest.showStructs": true,
+  "editor.suggest.showTypeParameters": true,
+  "editor.suggest.showVariables": true,
+  "editor.suggest.showWords": true,
+  "editor.suggest.showValues": true,
+  "editor.suggest.showEvents": true,
+  "editor.suggest.showUsers": true,
+  "editor.suggest.showUnits": true,
+  "editor.suggest.showCustomcolors": true,
+  "editor.suggest.showColorKeywords": true,
+  "editor.suggest.showColorValues": true,
+  "editor.suggest.showColorDecorators": true,
+  "editor.suggest.showDeprecated": true
+}
