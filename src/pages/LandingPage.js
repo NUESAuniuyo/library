@@ -182,7 +182,7 @@ const LandingPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                  className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-white-100"
                 >
                   <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Icon className="w-6 h-6 text-white" />
