@@ -1,6 +1,19 @@
-import { google } from "googleapis";
-import formidable from "formidable";
-import fs from "fs";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const { google } = require("googleapis");
+const formidable = require("formidable");
+const fs = require("fs");
+
+// Load environment variables
+dotenv.config({ path: ".env.local" });
+
+const app = express();
+const PORT = 3001;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
 
 // Parse the service account credentials from environment variable
 const getCredentials = () => {
@@ -40,34 +53,107 @@ const getDriveClient = () => {
   return google.drive({ version: "v3", auth });
 };
 
-// Disable body parsing, we'll handle it with formidable
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// Helper function to find or create a folder
+async function findOrCreateFolder(drive, folderName, parentId) {
+  // Search for existing folder
+  const query = `name='${folderName}' and '${parentId}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`;
 
-export default async function handler(req, res) {
+  const response = await drive.files.list({
+    q: query,
+    fields: "files(id, name)",
+    spaces: "drive",
+  });
+
+  if (response.data.files.length > 0) {
+    return response.data.files[0].id;
+  }
+
+  // Create new folder if not found
+  const fileMetadata = {
+    name: folderName,
+    mimeType: "application/vnd.google-apps.folder",
+    parents: [parentId],
+  };
+
+  const folder = await drive.files.create({
+    requestBody: fileMetadata,
+    fields: "id",
+  });
+
+  return folder.data.id;
+}
+
+// Helper function to create folder structure in Google Drive
+async function createFolderStructure(
+  drive,
+  department,
+  level,
+  semester,
+  course,
+  uploadType
+) {
+  const rootFolderId = process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID;
+
+  // Create or find Department folder
+  const deptFolderId = await findOrCreateFolder(
+    drive,
+    department,
+    rootFolderId
+  );
+
+  // Create or find Level folder (e.g., "100 Level", "200 Level")
+  const levelFolderId = await findOrCreateFolder(
+    drive,
+    `${level} Level`,
+    deptFolderId
+  );
+
+  // Create or find Semester folder (e.g., "First Semester", "Second Semester")
+  const semesterFolderId = await findOrCreateFolder(
+    drive,
+    semester,
+    levelFolderId
+  );
+
+  // Create or find Course folder (e.g., "CPE 201 - Computer Programming II")
+  const courseFolderId = await findOrCreateFolder(
+    drive,
+    course,
+    semesterFolderId
+  );
+
+  // Create or find Upload Type folder (e.g., "Textbooks", "Past Questions", "Materials/Notes")
+  const uploadTypeFolderId = await findOrCreateFolder(
+    drive,
+    uploadType,
+    courseFolderId
+  );
+
+  return uploadTypeFolderId;
+}
+
+// Test endpoint
+app.get("/api/test", (req, res) => {
+  console.log("Test API hit!");
+
+  return res.status(200).json({
+    message: "API is working!",
+    method: req.method,
+    timestamp: new Date().toISOString(),
+    env: {
+      hasGoogleCreds: !!process.env.GOOGLE_SERVICE_ACCOUNT,
+      hasFolderId: !!process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID,
+    },
+  });
+});
+
+// Upload endpoint
+app.post("/api/upload", async (req, res) => {
   console.log("API endpoint hit:", req.method);
-
-  // Add CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-  // Handle preflight requests
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  // Only allow POST requests
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
 
   try {
     // Parse the multipart form data
-    const form = formidable({
+    const form = new formidable.IncomingForm({
       maxFileSize: 10 * 1024 * 1024, // 10MB limit
       keepExtensions: true,
     });
@@ -150,83 +236,17 @@ export default async function handler(req, res) {
       error: error.message,
     });
   }
-}
+});
 
-// Helper function to create folder structure in Google Drive
-async function createFolderStructure(
-  drive,
-  department,
-  level,
-  semester,
-  course,
-  uploadType
-) {
-  const rootFolderId = process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID;
+// Health check
+app.get("/health", (req, res) => {
+  res.json({ status: "OK", timestamp: new Date().toISOString() });
+});
 
-  // Create or find Department folder
-  const deptFolderId = await findOrCreateFolder(
-    drive,
-    department,
-    rootFolderId
-  );
-
-  // Create or find Level folder (e.g., "100 Level", "200 Level")
-  const levelFolderId = await findOrCreateFolder(
-    drive,
-    `${level} Level`,
-    deptFolderId
-  );
-
-  // Create or find Semester folder (e.g., "First Semester", "Second Semester")
-  const semesterFolderId = await findOrCreateFolder(
-    drive,
-    semester,
-    levelFolderId
-  );
-
-  // Create or find Course folder (e.g., "CPE 201 - Computer Programming II")
-  const courseFolderId = await findOrCreateFolder(
-    drive,
-    course,
-    semesterFolderId
-  );
-
-  // Create or find Upload Type folder (e.g., "Textbooks", "Past Questions", "Materials/Notes")
-  const uploadTypeFolderId = await findOrCreateFolder(
-    drive,
-    uploadType,
-    courseFolderId
-  );
-
-  return uploadTypeFolderId;
-}
-
-// Helper function to find or create a folder
-async function findOrCreateFolder(drive, folderName, parentId) {
-  // Search for existing folder
-  const query = `name='${folderName}' and '${parentId}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`;
-
-  const response = await drive.files.list({
-    q: query,
-    fields: "files(id, name)",
-    spaces: "drive",
+app.listen(PORT, () => {
+  console.log(`🚀 API Server running on http://localhost:${PORT}`);
+  console.log(`📁 Environment variables loaded:`, {
+    hasGoogleCreds: !!process.env.GOOGLE_SERVICE_ACCOUNT,
+    hasFolderId: !!process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID,
   });
-
-  if (response.data.files.length > 0) {
-    return response.data.files[0].id;
-  }
-
-  // Create new folder if not found
-  const fileMetadata = {
-    name: folderName,
-    mimeType: "application/vnd.google-apps.folder",
-    parents: [parentId],
-  };
-
-  const folder = await drive.files.create({
-    requestBody: fileMetadata,
-    fields: "id",
-  });
-
-  return folder.data.id;
-}
+});

@@ -73,13 +73,17 @@ NUESA Library/
 ├── Computer Engineering/
 │   ├── 100 Level/
 │   │   ├── First Semester/
-│   │   │   ├── Textbooks/
-│   │   │   ├── Past Questions/
-│   │   │   └── Materials/Notes/
+│   │   │   ├── CPE 101 - Introduction to Computing/
+│   │   │   │   ├── Textbooks/
+│   │   │   │   ├── Past Questions/
+│   │   │   │   └── Materials/Notes/
+│   │   │   ├── MTH 101 - General Mathematics I/
+│   │   │   │   ├── Textbooks/
+│   │   │   │   ├── Past Questions/
+│   │   │   │   └── Materials/Notes/
+│   │   │   └── ... (other courses)
 │   │   └── Second Semester/
-│   │       ├── Textbooks/
-│   │       ├── Past Questions/
-│   │       └── Materials/Notes/
+│   │       └── ... (similar structure)
 │   ├── 200 Level/
 │   └── ... (up to 500 Level)
 ├── Electrical Engineering/

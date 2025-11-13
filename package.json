@@ -6,6 +6,10 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
     "formidable": "^3.5.4",
     "framer-motion": "^12.23.24",
     "googleapis": "^164.1.0",
@@ -25,7 +29,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "vercel-build": "react-scripts build"
+    "vercel-build": "react-scripts build",
+    "dev:api": "node server.js",
+    "dev": "concurrently \"npm start\" \"npm run dev:api\""
   },
   "eslintConfig": {
     "extends": [
