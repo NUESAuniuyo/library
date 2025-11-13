@@ -6,6 +6,7 @@ const UploadForm = () => {
   const [department, setDepartment] = useState("");
   const [level, setLevel] = useState("");
   const [semester, setSemester] = useState("");
+  const [uploadType, setUploadType] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState({ text: "", isError: false });
 
@@ -22,6 +23,7 @@ const UploadForm = () => {
 
   const levels = ["100", "200", "300", "400", "500"];
   const semesters = ["First Semester", "Second Semester"];
+  const uploadTypes = ["Textbooks", "Past Questions", "Materials/Notes"];
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -40,7 +42,7 @@ const UploadForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!file || !department || !level || !semester) {
+    if (!file || !department || !level || !semester || !uploadType) {
       setMessage({
         text: "Please fill all fields and select a file",
         isError: true,
@@ -53,6 +55,7 @@ const UploadForm = () => {
     formData.append("department", department);
     formData.append("level", level);
     formData.append("semester", semester);
+    formData.append("uploadType", uploadType);
 
     console.log("FormData entries:");
     for (let pair of formData.entries()) {
@@ -78,6 +81,7 @@ const UploadForm = () => {
       setDepartment("");
       setLevel("");
       setSemester("");
+      setUploadType("");
       document.getElementById("file-upload").value = "";
     } catch (error) {
       console.error("Upload error:", error);
@@ -157,6 +161,26 @@ const UploadForm = () => {
           </select>
         </div>
 
+        {/* Upload Type Select */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Upload Type
+          </label>
+          <select
+            value={uploadType}
+            onChange={(e) => setUploadType(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-nuesa-green focus:border-transparent"
+            disabled={isUploading || !semester} // Disable if no semester is selected
+          >
+            <option value="">Select Upload Type</option>
+            {uploadTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {/* File Upload */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -211,7 +235,12 @@ const UploadForm = () => {
           <button
             type="submit"
             disabled={
-              isUploading || !file || !department || !level || !semester
+              isUploading ||
+              !file ||
+              !department ||
+              !level ||
+              !semester ||
+              !uploadType
             }
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-nuesa-green hover:bg-nuesa-green-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-nuesa-green disabled:opacity-50 disabled:cursor-not-allowed"
           >

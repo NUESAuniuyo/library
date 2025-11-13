@@ -59,9 +59,12 @@ export default async function handler(req, res) {
     const semester = Array.isArray(fields.semester)
       ? fields.semester[0]
       : fields.semester;
+    const uploadType = Array.isArray(fields.uploadType)
+      ? fields.uploadType[0]
+      : fields.uploadType;
     const file = Array.isArray(files.file) ? files.file[0] : files.file;
 
-    if (!file || !department || !level || !semester) {
+    if (!file || !department || !level || !semester || !uploadType) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
@@ -73,12 +76,13 @@ export default async function handler(req, res) {
     // Initialize Google Drive client
     const drive = getDriveClient();
 
-    // Create folder structure: Department/Level/Semester
+    // Create folder structure: Department/Level/Semester/UploadType
     const folderId = await createFolderStructure(
       drive,
       department,
       level,
-      semester
+      semester,
+      uploadType
     );
 
     // Upload file to Google Drive
@@ -117,7 +121,13 @@ export default async function handler(req, res) {
 }
 
 // Helper function to create folder structure in Google Drive
-async function createFolderStructure(drive, department, level, semester) {
+async function createFolderStructure(
+  drive,
+  department,
+  level,
+  semester,
+  uploadType
+) {
   const rootFolderId = process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID;
 
   // Create or find Department folder
@@ -127,21 +137,28 @@ async function createFolderStructure(drive, department, level, semester) {
     rootFolderId
   );
 
-  // Create or find Level folder
+  // Create or find Level folder (e.g., "100 Level", "200 Level")
   const levelFolderId = await findOrCreateFolder(
     drive,
-    `Level ${level}`,
+    `${level} Level`,
     deptFolderId
   );
 
-  // Create or find Semester folder
+  // Create or find Semester folder (e.g., "First Semester", "Second Semester")
   const semesterFolderId = await findOrCreateFolder(
     drive,
     semester,
     levelFolderId
   );
 
-  return semesterFolderId;
+  // Create or find Upload Type folder (e.g., "Textbooks", "Past Questions", "Materials/Notes")
+  const uploadTypeFolderId = await findOrCreateFolder(
+    drive,
+    uploadType,
+    semesterFolderId
+  );
+
+  return uploadTypeFolderId;
 }
 
 // Helper function to find or create a folder

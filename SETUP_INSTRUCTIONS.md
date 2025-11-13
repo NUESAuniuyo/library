@@ -71,13 +71,20 @@ Files will be organized automatically:
 ```
 NUESA Library/
 ├── Computer Engineering/
-│   ├── Level 100/
+│   ├── 100 Level/
 │   │   ├── First Semester/
+│   │   │   ├── Textbooks/
+│   │   │   ├── Past Questions/
+│   │   │   └── Materials/Notes/
 │   │   └── Second Semester/
-│   ├── Level 200/
-│   └── ...
+│   │       ├── Textbooks/
+│   │       ├── Past Questions/
+│   │       └── Materials/Notes/
+│   ├── 200 Level/
+│   └── ... (up to 500 Level)
 ├── Electrical Engineering/
-└── ...
+├── Mechanical Engineering/
+└── ... (all 8 departments)
 ```
 
 ## 🔒 Security Notes
