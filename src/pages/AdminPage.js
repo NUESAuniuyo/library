@@ -10,7 +10,6 @@ const AdminPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simple authentication - in a real app, this would be handled by a backend
     if (loginForm.username === 'DOA' && loginForm.password === 'nuesa2024') {
       setIsAuthenticated(true);
       setLoginError('');
@@ -110,27 +109,33 @@ const AdminPage = () => {
 
   // If authenticated, show the upload form
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+//  <div className="min-h-screen bg-gray-50">
+ <div className="container mx-auto px-4 pt-12 pb-8">  
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="max-w-4xl mx-auto"
+    >
+      {/* Header Section */}
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+        <button
+          onClick={() => setIsAuthenticated(false)}
+          className="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
         >
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-            <button
-              onClick={() => setIsAuthenticated(false)}
-              className="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
-            >
-              Logout
-            </button>
-          </div>
-          <UploadForm />
-        </motion.div>
+          Logout
+        </button>
       </div>
-    </div>
+
+      {/* Upload Form Section */}
+      <div className="bg-white rounded-lg shadow-md p-8">
+        <UploadForm />
+      </div>
+    </motion.div>
+  </div>
+//  </div>
   );
-};
+}
 
 export default AdminPage;

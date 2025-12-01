@@ -10,7 +10,6 @@ import DepartmentDetail from './pages/DepartmentDetail';
 import CoursePage from './pages/CoursePage';
 import MapPage from './pages/MapPage';
 import AboutPage from './pages/AboutPage';
-import AdminPage from './pages/AdminPage';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,7 +39,6 @@ function App() {
             <Route path="/departments/:departmentId/course/:courseId" element={<CoursePage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
         <Footer />

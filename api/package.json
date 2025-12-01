@@ -1,7 +1,0 @@
-{
-  "type": "module",
-  "dependencies": {
-    "googleapis": "^164.1.0",
-    "formidable": "^3.5.1"
-  }
-}

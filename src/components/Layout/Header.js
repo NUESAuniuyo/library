@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, BookOpen, Users, Map, Info, Settings } from 'lucide-react';
+import { Menu, X, BookOpen, Users, Map, Info } from 'lucide-react';
 import facultyLogo from '../../logo/faculty.png';
 
 const Header = () => {
@@ -22,7 +22,6 @@ const Header = () => {
     { name: 'Departments', path: '/departments', icon: Users },
     { name: 'Map', path: '/map', icon: Map },
     { name: 'About', path: '/about', icon: Info },
-    { name: 'Admin', path: '/admin', icon: Settings },
   ];
 
   return (
