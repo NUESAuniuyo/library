@@ -645,8 +645,304 @@ const courseTextbooks = {
         url: 'https://drive.google.com/file/d/1iFjZWukizEy4NZOkHwGYVvloGvb8MHYl/view?usp=drive_link'
       }
     ]
+  },
+  // 300 Level - Second Semester
+  // 400 Level - Second Semester
+  // 500 Level - first Semester
+  // Mechanical-first semester 
+  'GRE 511':{   
+          title: 'Engineering Management and Law', 
+          credits: 2,
+          textbooks:[
+            {
+              title: 'Engineering Management and Law',
+              url: 'https://drive.google.com/file/d/1SbXlpPdRgrWrVLAfeLUxacXE_Rb2qz0a/view?usp=drive_link',
+            },
+
+            {
+              title: 'Assigment solution',
+              url: 'https://drive.google.com/file/d/1NJOomyBK2kLfeChAqnXRnV3bs347eb8j/view?usp=drive_link'
+            },
+
+            {
+              title:'Past Questions',
+              url:'https://drive.google.com/file/d/1Mos8jMom31mmdjg57SpP-2MgyAKSk7hF/view?usp=drive_link',
+              
+            },
+              
+              {title:'Past Questions',
+              
+              url:'https://drive.google.com/file/d/1_QRiuf7YUXDWWCOdz_ioj5KqCAI9MBnC/view?usp=drive_link',
+            },
+
+
+
+          ]
+        },
+  'MEE 511': {
+    title: 'Engineering Metallurgy Applied Design',
+    credits: 3,
+    textbooks: [
+      {
+        title: 'Note 1',
+        url: 'https://drive.google.com/file/d/1_amXxhXKPO22CTbxiGMcur74zPp3dQQV/view?usp=drive_link'
+      },
+
+  {
+    title: 'Note 2',
+    url: 'https://drive.google.com/file/d/1cz8ixDl982F3vDXe-uHW7YnrzM3NpbJl/view?usp=drive_link'
+  },
+
+    {
+    title: 'Note 3',
+    url: 'https://drive.google.com/file/d/1YZY2JFPXUmvi22Z5GhRzI3N6g-7hhgIS/view?usp=drive_link'
+  },
+
+    {
+    title: 'Note 4',
+    url: 'https://drive.google.com/file/d/1D6sQtLxO6lAs1wquW5xMAERxS1Laqed9/view?usp=drive_link'
+  },
+
+    {
+    title: 'Note 5',
+    url: 'https://drive.google.com/file/d/1B7HtHGQXUzfBmRykbRcFXJmlSXYYMZqY/view?usp=drive_link'
+  },
+
+    {
+    title: 'Note 6',
+    url: 'https://drive.google.com/file/d/12pawd8BcTICaNErlLdheZIXP9WtS-1Tj/view?usp=drive_link'
+  },
+
+    {
+    title: 'Note 7',
+    url: 'https://drive.google.com/file/d/1bJcSEOVncvpYW7x5_X4JxyXgS9C759Ng/view?usp=drive_link'
+  },
+
+    {
+    title: 'Note 2+ Assignment',
+    url: 'https://drive.google.com/file/d/1kI8dPXcK9-zyjuX-P54eZYcIuOGgQnXp/view?usp=drive_link'
+  },
+
+
+  {
+    title:'Past Question',
+    url: 'https://drive.google.com/file/d/16DZhMIBMtx8FEYbyk1lXUkI1ZtcBAwNh/view?usp=drive_link',
+
+  },
+
+      { title:'Past question',
+    url: 'https://drive.google.com/file/d/1VQsltw9_-5bqrxED_JXgGE90ddIB6RwU/view?usp=drive_link',
+
+  },
+ ]
+  },
+  'MEE 512': {
+    title: 'Applied Design',
+    credits: 3,
+    textbooks: [
+      {
+        title: 'A Textbook of theory of machine design',
+        url: 'https://drive.google.com/file/d/1T9hGaFYvJhJYxJ8qeeaFgAMj-Y7Me-vm/view?usp=drive_link'
+      },
+
+
+
+      {
+      title:'Critical path analysis',
+    url: 'https://drive.google.com/file/d/1sZUiRklx7mC-reFXz2B8YHBn5WhhkHrx/view?usp=drive_link',
+
+  },
+
+  {
+      title:'Design principles ',
+    url: 'https://drive.google.com/file/d/1VkRcE2gYOWae99UUaZHZHHry7cKubomX/view?usp=drive_link',
+
+  },
+
+
+  {
+
+    title:'Engineering design principles',
+    url: 'https://drive.google.com/file/d/1d_sZpxhOFqmcnMXWy8h03A748ly-6pG4/view?usp=drive_link'
+  },
+
+   {
+
+    title:'Fundamentals design principles ',
+    url: 'https://drive.google.com/file/d/1rSRdU_i48MuA6lkxIqSTgnXBhrDrOH48/view?usp=drive_link'
+  },
+
+   {
+
+    title:'Critical path method ',
+    url: 'https://drive.google.com/file/d/1JcGUzKIizxNghGymB-zkfYCdOTh4TmNS/view?usp=drive_link'
+  },
+
+]
+  },
+  'MEE 513': {
+    title: 'Mechanical Engineering Lab IV',
+    credits: 1,
+    textbooks: [
+      {
+        title: 'Past Question',
+        url: 'https://drive.google.com/drive/folders/1cttPqXvDBiALjzi6JVivRHMcCqzs5Kco?usp=drive_link'
+      }
+    ]
+  },
+  'MEE 515': {
+    title: 'Production Engineering',
+    credits: 4,
+    textbooks: [
+      {
+        title: 'Production Engineering Textbook',
+        url: 'https://drive.google.com/file/d/1production-engineering-textbook/view?usp=drive_link'
+      }
+    ]
+  },
+  'MEE 516': {
+    title: 'Principles of Industrial Engineering',
+    credits: 4,
+    textbooks: [
+      {
+        title: 'MEE 516 notes',
+        url: 'https://drive.google.com/file/d/1JintBZhBwvgYVoJzPv4mFRCR0UraMdfo/view?usp=drive_link'
+      }
+    ]
+  },
+  'MEE 518': {
+    title: 'Principles of Air Conditioning',
+    credits: 3,
+    textbooks: [
+      {
+        title: 'Lecture 1',
+        url: 'https://drive.google.com/file/d/1YAudbf_mVWRNTU71XdKbGHpRrOt49lwb/view?usp=drive_link'
+      },
+
+       {
+        title: 'Lecture 2',
+        url: 'https://drive.google.com/file/d/19srpq3di-c847aVU8n-BCM94KdU1FKQ4/view?usp=drive_link'
+      },
+
+       {
+        title: 'Lecture 3',
+        url: 'https://drive.google.com/file/d/1KsH0IbPGknpWE-tRnaqIzQK7fX7pq0zx/view?usp=drive_link'
+      },
+
+       {
+        title: 'Introduction to thermodynamics',
+        url: 'https://drive.google.com/file/d/1KsH0IbPGknpWE-tRnaqIzQK7fX7pq0zx/view?usp=drive_link'
+      },
+
+       {
+        title: 'Cengel-thermodynamics an apporach',
+        url: 'https://drive.google.com/file/d/1vPvIbyIUD4tlSZgOid0SoivdHIUWVZpB/view?usp=drive_link'
+      },
+    ]
+  },
+  'MEE 521': {
+    title: 'Applied Thermodynamics 2',
+    credits: 3,
+    textbooks: [
+      {
+        title: 'Cengel-thermodynamics an apporach',
+        url: 'https://drive.google.com/file/d/1vPvIbyIUD4tlSZgOid0SoivdHIUWVZpB/view?usp=drive_link'
+      }, 
+        {
+        title: 'lecture note ',
+        url: 'https://drive.google.com/file/d/1vPvIbyIUD4tlSZgOid0SoivdHIUWVZpB/view?usp=drive_link'
+      },
+
+        {
+        title: 'Thermodynamics gas-power circle',
+        url: 'https://drive.google.com/file/d/1S0NwYRHWfjZ7p01t1T9Z99I1cFYRD8VS/view?usp=drive_link'
+      },
+
+        {
+        title: 'Thermodynamics Table ',
+        url: 'https://drive.google.com/file/d/1ho5XOMHpizGICV4hnE5htjjRebV-uhaV/view?usp=drive_link'
+      },
+
+
+
+   
+    ]
+  },
+  'MEE 522': {
+    title: 'Applied Fluid Mechanics II',
+    credits: 3,
+    textbooks: [
+      {
+        title: 'Fluid mechanics by John F',
+        url: 'https://drive.google.com/file/d/1zluf0cTZT2UnjOMB9NTDWdo90yoav2l9/view?usp=drive_link'
+       },
+
+        {
+        title: 'Fluid mechanics and hydraulic',
+        url: 'https://drive.google.com/file/d/1WIUSOrw8JjJuQCtDTdP49bpPWPhCpC_t/view?usp=drive_link'
+      },
+
+
+        {
+        title: 'Boundary layer',
+        url: 'https://drive.google.com/file/d/12G68qcyj_y5ZllfcucSJMg4cM30kxs1D/view?usp=drive_link'
+      },
+
+
+        {
+        title: 'Navier strokes',
+        url: 'https://docs.google.com/document/d/1hGhZBGr3KwbHEIYWms6FOVGO6bvXwLSn/edit?usp=sharing&ouid=116695964947188714925&rtpof=true&sd=true'
+      },
+
+
+      {
+
+        title:'video guide on Navier strokes',
+        url: 'https://drive.google.com/file/d/14rAnFbifCGuoA4XYhTMhvH3_PI9aJLjd/view?usp=drive_link'
+      }
+    ]
+  },
+  'MEE 523': {
+    title: 'Engineering Materials Selection and Economics',
+    credits: 3,
+    textbooks: [
+      {
+        title: 'Engineering Materials Selection and Economics',
+        url: ''
+      }
+    ]
+  },
+  'MEE 525': {
+    title: 'Mechanical Engineering Lab V',
+    credits: 2,
+    textbooks: [
+      {
+        title: ' Note 1',
+        url: 'https://drive.google.com/file/d/1ZRyzWljTJdtdx89UNin_yMpkvbQW9iaB/view?usp=drive_link'
+      },
+
+        {
+        title: ' Note 2',
+        url: 'https://drive.google.com/file/d/1hRYfbIe2Z7RUxtDSQJTEgutx-r5tAvJp/view?usp=drive_link'
+      },
+
+
+        {
+        title: 'Note 3',
+        url: 'https://drive.google.com/file/d/1PPEkJACjqcxLwx6c5EAoGGEoJTMReZwE/view?usp=drive_link'
+      },
+
+
+        {
+        title: '',
+        url: ''
+      },
+    ]
   }
-};
+      };
+       
+        
+
 
 
   
@@ -655,9 +951,9 @@ const courseTextbooks = {
 const departmentData = {
   mechanical: {
     name: 'Mechanical Engineering',
-    hod: 'Dr. Idorenyin E. Markson',
+    hod: 'Prof. Idorenyin E. Markson',
    hodImage: hodMechanical,
-description: 'The Mechanical Engineering Department is dedicated to advancing the field through innovative research, comprehensive education, and practical applications in design, manufacturing, and analysis of mechanical systems.',
+   description: 'The Mechanical Engineering Department is dedicated to advancing the field through innovative research, comprehensive education, and practical applications in design, manufacturing, and analysis of mechanical systems.',
     vision: 'To be a leading department in mechanical engineering education and research in West Africa.',
     mission: 'To provide quality education and conduct cutting-edge research in mechanical engineering while serving the community.',
    
@@ -672,11 +968,11 @@ description: 'The Mechanical Engineering Department is dedicated to advancing th
         'To be a centre of excellence in power, control and communication engineering in the region.',
       mission:
         'To educate and mentor engineers with deep technical competence in electrical engineering, strong ethics, and industry-ready skills.',
-     },
+    },
   
     computer: {
       name: 'Computer Engineering',
-      hod: 'Dr. Philip M. Asuquo',
+      hod: 'Prof. Philip M. Asuquo',
       hodImage: hodComputer,
       description:
         'Computer Engineering blends hardware and software to develop computing systems, embedded devices, networks and intelligent applications for industry and research.',
@@ -736,7 +1032,8 @@ petroleum: {
   
     civil: {
       name: 'Civil Engineering',
-      hod: hodCivil,
+      hod: 'Dr. Ekaette E. Ekanem',
+      hodImage: hodCivil,
       description:
         'Civil Engineering focuses on the planning, design, construction and maintenance of infrastructure — including structures, transportation, water resources and geotechnical systems.',
       vision:
@@ -1203,6 +1500,27 @@ export const levels = [
           credits: 1, 
           description: 'Mechanical engineering lab IV.' 
         },
+        { 
+          code: 'MEE 515', 
+          title: 'Production Engineering', 
+          credits: 4, 
+          description: 'Principles and applications of production engineering.' 
+        },
+        { 
+          code: 'MEE 516', 
+          title: 'Principles of Industrial Engineering', 
+          credits: 4, 
+          description: 'Industrial engineering principles and methodologies.' 
+        },
+        { 
+          code: 'MEE 518', 
+          title: 'Principles of Air Conditioning', 
+          credits: 3, 
+          description: 'Fundamentals of air conditioning and refrigeration systems.' 
+        },
+
+
+        
       ]
     },
 

@@ -14,16 +14,20 @@
 
 .loader-spinner {
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #2E7D32; /* Green color */
+  border-top: 5px solid #2e7d32; /* Green color */
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  animation: spin 60s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loader-content {
@@ -34,9 +38,9 @@
 }
 
 .loading-text {
-  color: #2E7D32; /* Matching green color */
+  color: #2e7d32; /* Matching green color */
   font-size: 1.2rem;
   font-weight: 500;
   margin: 0;
-  font-family: 'Poppins', sans-serif; /* Matching your app's font */
+  font-family: "Poppins", sans-serif; /* Matching your app's font */
 }

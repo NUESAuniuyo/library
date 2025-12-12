@@ -123,7 +123,8 @@ const Header = () => {
             })}
           </motion.nav>
         )}
-      </div>
+
+              </div>
     </motion.header>
   );
 };

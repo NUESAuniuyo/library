@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
-import { FaMusic } from 'react-icons/fa';
+import { FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -86,7 +86,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-nuesa-green transition-colors"
               >
-                <FaMusic className="w-5 h-5" />
+                <FaTiktok className="w-5 h-5" />
               </a>
               <a
                 href="https://www.instagram.com/nuesa_uniuyo?igsh=MTNiOWtlc3VrZnBtag=="

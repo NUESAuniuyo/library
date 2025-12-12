@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Users, ChevronDown, Book, Users as UsersIcon, FileText, Award, Clock, FileSearch, GraduationCap } from 'lucide-react';
 import NuesaImage from '../logo/Nuesa.png';
+import GallerySection from '../components/Gallery/GallerySection';
 
 // Stats data
 const stats = [
@@ -45,6 +47,53 @@ const features = [
   }
 ];
 
+// Typing Animation Component
+const TypingText = ({ text, className = "" }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (isTyping && currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 30); // Typing speed
+
+      return () => clearTimeout(timeout);
+    } else if (currentIndex >= text.length && isTyping) {
+      // Start typing out after a pause
+      const timeout = setTimeout(() => {
+        setIsTyping(false);
+      }, 2000); // Pause before typing out
+
+      return () => clearTimeout(timeout);
+    } else if (!isTyping && displayText.length > 0) {
+      // Typing out effect
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev.slice(0, -1));
+      }, 50); // Typing out speed
+
+      return () => clearTimeout(timeout);
+    } else if (!isTyping && displayText.length === 0) {
+      // Restart typing
+      const timeout = setTimeout(() => {
+        setIsTyping(true);
+        setCurrentIndex(0);
+      }, 1000); // Pause before restarting
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, isTyping, displayText, text]);
+
+  return (
+    <span className={className}>
+      {displayText}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+};
+
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-white">
@@ -74,16 +123,22 @@ const LandingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Welcome to<span className="text-green-400"> NUESA Uniuyo E-Library</span>
+              Welcome to<span className="text-green-400"> <TypingText text="NUESA Uniuyo E-Library" /></span>
             </motion.h1>
             
             <motion.p 
-              className="hero-subtitle mb-8 max-w-2xl mx-auto"
+              className="hero-subtitle mb-8 max-w-2xl mx-auto font-light tracking-wide leading-relaxed"
+              style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: '1.25rem',
+                textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                letterSpacing: '0.05em'
+              }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Your gateway to academic excellence and research resources at the Faculty of Engineering, University of Uyo.
+              Your gateway to <span className="font-semibold text-white">academic excellence</span> and <span className="font-semibold text-white">research resources</span> at the <span className="font-bold text-green-400">Faculty of Engineering</span>, <span className="text-green-300">University of Uyo</span>.
             </motion.p>
             
             <motion.div 
@@ -142,17 +197,50 @@ const LandingPage = () => {
               return (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                  }}
                   viewport={{ once: true }}
-                  className="text-center bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                  whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="text-center bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <motion.div 
+                    className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4"
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.1,
+                      transition: { duration: 0.6 }
+                    }}
+                  >
                     <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-800 mb-2">{stat.value}</h3>
-                  <p className="text-gray-600 font-medium">{stat.label}</p>
+                  </motion.div>
+                  <motion.h3 
+                    className="text-3xl font-bold text-gray-800 mb-2"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.15 + 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    {stat.value}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-600 font-medium"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.15 + 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    {stat.label}
+                  </motion.p>
                 </motion.div>
               );
             })}
@@ -178,23 +266,60 @@ const LandingPage = () => {
               return (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10
+                  }}
                   viewport={{ once: true }}
-                  className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-white-100"
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -5,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-r from-green-600 to-green-500 rounded-full flex items-center justify-center mx-auto mb-6"
+                    whileHover={{ 
+                      rotate: 360,
+                      scale: 1.1,
+                      transition: { duration: 0.6 }
+                    }}
+                  >
                     <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  </motion.div>
+                  <motion.h3 
+                    className="text-2xl font-bold text-gray-900 mb-4"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.15 + 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    {feature.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-600 leading-relaxed"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: index * 0.15 + 0.5 }}
+                    viewport={{ once: true }}
+                  >
+                    {feature.description}
+                  </motion.p>
                 </motion.div>
               );
             })}
           </div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      <GallerySection />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-green-600 to-green-700">

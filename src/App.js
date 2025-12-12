@@ -10,6 +10,7 @@ import DepartmentDetail from './pages/DepartmentDetail';
 import CoursePage from './pages/CoursePage';
 import MapPage from './pages/MapPage';
 import AboutPage from './pages/AboutPage';
+import GalleryPage from './pages/GalleryPage';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ function App() {
     // Simulate loading time (you can remove this in production)
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000); // 1 second delay
+    }, 10000); // 10 seconds delay
 
     return () => clearTimeout(timer);
   }, []);
@@ -39,6 +40,7 @@ function App() {
             <Route path="/departments/:departmentId/course/:courseId" element={<CoursePage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
           </Routes>
         </main>
         <Footer />
